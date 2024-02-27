@@ -35,7 +35,7 @@ class PostListView(APIView):
 
     def patch(self, request, id):
         try:
-            response = requests.patch(f'{self.env('EXTERNAL_API_URL')}{id}/', json=request.data)
+            response = requests.patch(f'{self.env("EXTERNAL_API_URL")}{id}/', json=request.data)
             response.raise_for_status()
             return Response(response.json(), status=response.status_code)
         except requests.RequestException as e:
@@ -43,7 +43,7 @@ class PostListView(APIView):
         
     def delete(self, request, id):
         try:
-            response = requests.delete(f'{self.env('EXTERNAL_API_URL')}{id}/')
+            response = requests.delete(f'{self.env("EXTERNAL_API_URL")}{id}/')
             response.raise_for_status()
             return Response({'message': 'Post deleted successfully'}, status=response.status_code)
         except requests.RequestException as e:
